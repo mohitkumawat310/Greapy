@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects : Greapy</title>
+    <link rel="shortcut icon" href="public_image/fevi.svg" type="image/x-icon">
+    <!-- ---link--css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="extra/select_js/select2.min.css">
+    <!-- ---link--js -->
+    <script src="js/jquery.js"></script>
+    <script src="extra/select_js/select2.min.js"></script>
+    <!-- ---Additional Css-- -->
+    <style>
+        .off {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .active2grid {
+            display: grid;
+        }
+
+        .rotate {
+            -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+
+        .selected_item_cate {
+            color: var(--prim_color);
+            border-bottom: 1px solid var(--prim_color);
+            padding-bottom: 5px;
+        }
+
+        .search_type_p_sel {
+            color: #1f2cff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ----Message--- -->
+    <div class="block err">
+        <p class="err" style="width: 100%; text-align: center;">This website only contains frontend files.</p>
+    </div>
+    <!-- ---Dnavbar--- -->
+    <div class="dnavbar_area block">
+        <div class="dlogo">
+            <a href="#"> <img src="public_image/logo.svg" alt="logo"></a>
+        </div>
+        <div class="dnavbar_items">
+            <ul class="dnavbar_ul">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="project.html" id="active">Project</a></li>
+                <!-- <li><a href="#">About Us</a></li> -->
+            </ul>
+        </div>
+        <div class="dnavbar_action">
+            <div class="dbflogin">
+                <a href="sign_up.html" class="daction_a">Sign Up</a>
+                <a href="sign_in.html"><button class="prim_back_btn">Sign in</button></a>
+            </div>
+            <div class="daflogin_area" style="display: none;">
+                <div class="daflogin">
+                    <p class="daction_a2">Profile</p>
+                    <img src="public_image/down.svg" alt="down_img">
+                </div>
+                <div class="dsubmenu">
+                    <ul class="dsub_ul">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Wallet</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#" style="color: red;">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---Mnavbar--- -->
+    <div class="mnavbar_area">
+        <div class="mnavbar_main block">
+            <img src="public_image/menu-line.svg" alt="menu" class="mmenu_toggle" id="mmenu_toggle">
+            <img src="public_image/menu-cross.svg" alt="menu" class="mmenu_toggle mmenu_close" id="mmenu_close">
+            <a href="#"><img src="public_image/logo.svg" alt="logo" class="mlogo_img"></a>
+            <a href="#" class="daction_a" style="margin-right: 0;font-size: 18px;">Sign in</a>
+            <a href="#" class="daction_a" style="margin-right: 0;font-size: 18px; display: none;">Profile</a>
+        </div>
+        <div class="mnavbar_item block">
+            <ul class="mnavbar_ul1">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <div class="mnavbar_heading">
+                <div class="line_break"></div>
+            </div>
+            <ul class="mnavbar_ul1">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#" style="color: red;">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- ---Search_Area--- -->
+    <form action="" class="form">
+        <div class="search_area block">
+            <div class="search_sec">
+                <div class="more_search_type_sec" id="more_search_type_sec">
+                    <p class="search_type_p search_type_p1 search_type_p_sel">Project</p>
+                    <p class="search_type_p search_type_p1">User</p>
+                </div>
+                <div class="search_type_sec">
+                    <div class="selected_search_type_sec" id="selected_search_type_sec">
+                        <p class="search_type_p" id="selected_serach_type">Project</p>
+                        <img src="public_image/down_light.svg" alt="down" class="search_type_down_img"
+                            id="search_type_down_img1">
+                    </div>
+                </div>
+                <div class="v_break"></div>
+                <input class="search_box" type="text" id="search_value" name="search" id=""
+                    placeholder="Type to search...">
+                <button class="prim_back_btn" id="project_search_btn">Search</button>
+            </div>
+        </div>
+    </form>
+    <div class="loading" id="search_loading" style="display: none;">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="main_area" id="project_sec">
+        <!-- ---Popular area--- -->
+        <div class="popular_marketplace_area block">
+            <div class="reco_title_area">
+                <div class="reco_title">
+                    <img src="public_image/thumb-up-fill.svg" alt="fire-fill" class="reco_title_img">
+                    <div class="reco_title_div">
+                        <p class="reco_title_p">Recommended</p>
+                        <p class="reco_title_desc">Based on your specialization</p>
+                    </div>
+                </div>
+                <div class="reco_hide_are" id="reco_hide_area2">
+                    <p class="search_type_p" id="reco_hide_area_hide_text2">Hide</p>
+                    <img src="public_image/up_icon.svg" alt="down" class="search_type_down_img"
+                        id="search_type_down_img3">
+                </div>
+            </div>
+            <div class="item_area_sec" id="rec_project_area">
+                <div class="item_box_area">
+                    <div class="item_box0">
+                        <img src="public_image/pr-1.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">A good software planning takes time</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                    <div class="item_box0">
+                        <img src="public_image/pr-2.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">Software which will make communications much easier</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                    <div class="item_box0">
+                        <img src="public_image/pr-3.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">Need a developer for our upcoming project</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                    <div class="item_box0">
+                        <img src="public_image/pr-4.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">Alogorithms are always harder to think</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ---Line_break--- -->
+        <div class="item_line_break block" style="margin: auto; margin-top: 75px; background: #716f6f;"></div>
+        <!-- -----Project_area--- -->
+        <div class="marketplace_item_area block">
+            <div class="item_area_cate_area">
+                <p class="item_cate item_cate4 selected_item_cate" data-cate_id="2">All</p>
+                <p class="item_cate item_cate4" data-cate_id="2">Software</p>
+                <p class="item_cate item_cate4" data-cate_id="2">Apps</p>
+                <p class="item_cate item_cate4" data-cate_id="2">Scripts</p>
+                <p class="item_cate item_cate4" data-cate_id="2">Designs</p>
+                <p class="item_cate item_cate4" data-cate_id="2">Others</p>
+            </div>
+            <div class="loading" id="project_loading" style="display: none;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="item_area_sec" id="project_area">
+                <input type="hidden" id="last_search_value" value="hi">
+                <div class="item_box_area1">
+                    <div class="item_box0">
+                        <img src="public_image/pr-1.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">A good software planning takes time</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                    <div class="item_box0">
+                        <img src="public_image/pr-2.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">Software which will make communications much easier</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                    <div class="item_box0">
+                        <img src="public_image/pr-3.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">Need a developer for our upcoming project</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                    <div class="item_box0">
+                        <img src="public_image/pr-4.png" alt="item_name" class="item_box0_img">
+                        <div class="item_type_area">
+                            <button class="item_type_btn">Software</button>
+                        </div>
+                        <a href="#">
+                            <p class="item_title_p">Alogorithms are always harder to think</p>
+                        </a>
+                        <div class="project_item_box_deatils_area">
+                            <p class="item_rating_p">Requirments (2)</p>
+                            <p class="item_rating_p project_item_box_see_p">See posts</p>
+                            <div class="project_box_req_details_area">
+                                <p class="project_box_req_details_area_p">Web developer,C++ Developer,HTML</p>
+                            </div>
+                        </div>
+                        <div class="item_line_break"></div>
+                        <div class="item_bottom_area">
+                            <a href="#">
+                                <div class="item_owner_box1">
+                                    <img src="public_image/2.jpg" alt="item_owner" class="item_owner_img">
+                                    <p class="item_owner_name_p">Mohit Kumawat</p>
+                                </div>
+                            </a>
+                            <a href="#"><img src="public_image/item_overview_btn.svg" alt="item_overview_btn"
+                                    class="item_overview_btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---Footer Area--- -->
+    <div class="footer_area">
+        <div class="footer_main block">
+            <div class="footer1">
+                <img src="public_image/logo.svg" alt="logo">
+                <p class="footer_copyright_p">© 2021,greapy.com<br />All rights reserved.</p>
+                <div class="footer_social">
+                    <a href="#"><img src="public_image/linkedin-box-fill.svg" alt="linkedin"></a>
+                    <a href="#"><img src="public_image/instagram-fill.svg" alt="instagram"></a>
+                    <a href="#"><img src="public_image/twitter-fill.svg" alt="twitter"></a>
+                    <a href="#"><img src="public_image/facebook-box-fill.svg" alt="facebook"></a>
+                </div>
+            </div>
+            <div class="footer2">
+                <p class="footer_head">Links</p>
+                <ul class="footer_ul">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Marketplace</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Sign in</a></li>
+                </ul>
+            </div>
+            <div class="footer2">
+                <p class="footer_head">Support</p>
+                <ul class="footer_ul">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer2">
+                <p class="footer_head">Contact Us</p>
+                <ul class="footer_ul">
+                    <li><a href="#" id="color_prime">Contact us form</a></li>
+                    <li><a href="mailto:contact@greapy.com">contact@greapy.com</a></li>
+                    <li><a href="mailto:contact@greapy.com">We usually reply in hours but some time it can take
+                            longer.</a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ---Scripts Area--- -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

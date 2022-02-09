@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up : Greapy</title>
+    <link rel="shortcut icon" href="public_image/fevi.svg" type="image/x-icon">
+    <!-- ---link--css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="extra/select_js/select2.min.css">
+    <!-- ---link--js -->
+    <script src="js/jquery.js"></script>
+    <script src="extra/select_js/select2.min.js"></script>
+    <!-- ---Additional Css-- -->
+    <style>
+        .off {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .active2grid {
+            display: grid;
+        }
+
+        .rotate {
+            -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alerts">
+
+    </div>
+    <!-- ----Message--- -->
+    <div class="block err">
+        <p class="err" style="width: 100%; text-align: center;">This website only contains frontend files.</p>
+    </div>
+    <!-- ---Dnavbar--- -->
+    <div class="dnavbar_area block">
+        <div class="dlogo">
+            <a href="#"> <img src="public_image/logo.svg" alt="logo"></a>
+        </div>
+        <div class="dnavbar_items">
+            <ul class="dnavbar_ul">
+                <li><a href="index.html" id="active">Home</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="project.html">Project</a></li>
+                <!-- <li><a href="#">About Us</a></li> -->
+            </ul>
+        </div>
+        <div class="dnavbar_action">
+            <div class="dbflogin">
+                <a href="sign_up.html" class="daction_a">Sign Up</a>
+                <a href="sign_in.html"><button class="prim_back_btn">Sign in</button></a>
+            </div>
+            <div class="daflogin_area" style="display: none;">
+                <div class="daflogin">
+                    <p class="daction_a2">Profile</p>
+                    <img src="public_image/down.svg" alt="down_img">
+                </div>
+                <div class="dsubmenu">
+                    <ul class="dsub_ul">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Wallet</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#" style="color: red;">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---Mnavbar--- -->
+    <div class="mnavbar_area">
+        <div class="mnavbar_main block">
+            <img src="public_image/menu-line.svg" alt="menu" class="mmenu_toggle" id="mmenu_toggle">
+            <img src="public_image/menu-cross.svg" alt="menu" class="mmenu_toggle mmenu_close" id="mmenu_close">
+            <a href="#"><img src="public_image/logo.svg" alt="logo" class="mlogo_img"></a>
+            <a href="#" class="daction_a" style="margin-right: 0;font-size: 18px;">Sign in</a>
+            <a href="#" class="daction_a" style="margin-right: 0;font-size: 18px; display: none;">Profile</a>
+        </div>
+        <div class="mnavbar_item block">
+            <ul class="mnavbar_ul1">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <div class="mnavbar_heading">
+                <div class="line_break"></div>
+            </div>
+            <ul class="mnavbar_ul1">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#" style="color: red;">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- ---Main Area--- -->
+    <div class="sign_area block">
+        <div class="sign_area_right">
+            <h2 class="sign_area_h2"><span class="hbanner_h1_span">Boost</span> the start of your career by helping
+                other students</h2>
+            <p class="sign_area_p">We are providing resources from students to boost both student’s start.</p>
+            <div class="sign_btn_area">
+                <button class="hbanner_btn1">Team mates</button>
+                <button class="hbanner_btn2">Projects</button>
+                <button class="hbanner_btn3">Scripts</button>
+            </div>
+        </div>
+        <div class="sign_area_left">
+            <p class="sign_area_p2" style="margin-bottom: 0;">Sign up</p>
+            <p class="sign_area_p3"><span class="color_black">Please check your mail of OTP</span></p>
+            <div class="form_area">
+                <div class="single_input">
+                    <div class="input_title_dual">
+                        <p class="input_title">OTP</p>
+                        <p class="input_title_sec" id="sign_up_resend_otp" style="cursor: pointer;">Resend OTP</p>
+                    </div>
+                    <input type="text" placeholder="Enter OTP">
+                </div>
+                <div class="dual_input">
+                    <div class="single_input">
+                        <p class="input_title">Password</p>
+                        <div class="input_dual">
+                            <input type="password" name="password" placeholder="X-X-X-X">
+                            <div id="show_pass_area">
+                                <img class="show_pass" id="show_pass" src="public_image/eye-fill.svg" alt="eye">
+                                <img class="show_pass hide_pass" id="hide_pass" src="public_image/eye-off.svg"
+                                    alt="eye">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_input">
+                        <p class="input_title">Confirm password</p>
+                        <input type="password" placeholder="X-X-X-X">
+                    </div>
+                </div>
+                <div class="submit_space">
+                    <button class="prim_back_btn">Sign up</button>
+                    <a href="#" class="input_title_sec"><span class="color_black">Already a member?</span> Sign in
+                        now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---Footer Area--- -->
+    <div class="footer_area">
+        <div class="footer_main block">
+            <div class="footer1">
+                <img src="public_image/logo.svg" alt="logo">
+                <p class="footer_copyright_p">© 2021,greapy.com<br />All rights reserved.</p>
+                <div class="footer_social">
+                    <a href="#"><img src="public_image/linkedin-box-fill.svg" alt="linkedin"></a>
+                    <a href="#"><img src="public_image/instagram-fill.svg" alt="instagram"></a>
+                    <a href="#"><img src="public_image/twitter-fill.svg" alt="twitter"></a>
+                    <a href="#"><img src="public_image/facebook-box-fill.svg" alt="facebook"></a>
+                </div>
+            </div>
+            <div class="footer2">
+                <p class="footer_head">Links</p>
+                <ul class="footer_ul">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Marketplace</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Sign in</a></li>
+                </ul>
+            </div>
+            <div class="footer2">
+                <p class="footer_head">Support</p>
+                <ul class="footer_ul">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer2">
+                <p class="footer_head">Contact Us</p>
+                <ul class="footer_ul">
+                    <li><a href="#" id="color_prime">Contact us form</a></li>
+                    <li><a href="mailto:contact@greapy.com">contact@greapy.com</a></li>
+                    <li><a href="mailto:contact@greapy.com">We usually reply in hours but some time it can take
+                            longer.</a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ---Scripts Area--- -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
